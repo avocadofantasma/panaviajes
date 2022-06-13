@@ -1,0 +1,17 @@
+{
+    "cars": {
+        "amount": 3,
+        "gas": 500,
+        "toll": 400,
+        "cost": 900
+    },
+    "food": {
+        "meals": 3000,
+        "drinks": 2000,
+        "other": 500
+    },
+    "hotel": {
+        "totalCost": 12000,
+        "individualCost": 750
+    }
+}

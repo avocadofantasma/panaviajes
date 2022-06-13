@@ -1,0 +1,121 @@
+[
+    {
+        "name": "Carlos",
+        "isSponsored": true,
+        "payed": 1100,
+        "logs": [
+            {
+                "amount": 1000,
+                "type": "efectivo",
+                "date": "12 de Junio del 2022 23:22:20"
+            }
+        ]
+    },
+    {
+        "name": "Fany",
+        "isSponsored": true,
+        "payed": 400,
+        "logs": [
+            {
+                "amount": 200,
+                "type": "transferencia",
+                "date": "12 de Junio del 2022 23:22:20"
+            }
+        ]
+    },
+    {
+        "name": "Valeria",
+        "isSponsored": false,
+        "payed": 350,
+        "logs": []
+    },
+    {
+        "name": "Layan",
+        "isSponsored": false,
+        "payed": 1300,
+        "logs": [
+            {
+                "amount": 400,
+                "type": "efectivo",
+                "date": "12 de Junio del 2022 23:22:20"
+            },
+            {
+                "amount": 900,
+                "type": "transferencia",
+                "date": "12 de Junio del 2022 23:26:20"
+            }
+        ]
+    },
+    {
+        "name": "Paola",
+        "isSponsored": false,
+        "payed": 100,
+        "logs": []
+    },
+    {
+        "name": "Rafa",
+        "isSponsored": false,
+        "payed": 0,
+        "logs": []
+    },
+    {
+        "name": "Silvia",
+        "isSponsored": false,
+        "payed": 0,
+        "logs": []
+    },
+    {
+        "name": "Karen",
+        "isSponsored": false,
+        "payed": 0,
+        "logs": []
+    },
+    {
+        "name": "Tany",
+        "isSponsored": false,
+        "payed": 0,
+        "logs": []
+    },
+    {
+        "name": "Daniel",
+        "isSponsored": false,
+        "payed": 0,
+        "logs": []
+    },
+    {
+        "name": "Viviana",
+        "isSponsored": false,
+        "payed": 0,
+        "logs": []
+    },
+    {
+        "name": "Jona",
+        "isSponsored": false,
+        "payed": 0,
+        "logs": []
+    },
+    {
+        "name": "Juanca",
+        "isSponsored": false,
+        "payed": 0,
+        "logs": []
+    },
+    {
+        "name": "Fran",
+        "isSponsored": false,
+        "payed": 0,
+        "logs": []
+    },
+    {
+        "name": "Miguel",
+        "isSponsored": false,
+        "payed": 0,
+        "logs": []
+    },
+    {
+        "name": "China",
+        "isSponsored": false,
+        "payed": 0,
+        "logs": []
+    }
+]
