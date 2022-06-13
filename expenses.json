@@ -2,8 +2,7 @@
     "cars": {
         "amount": 3,
         "gas": 500,
-        "toll": 400,
-        "cost": 900
+        "toll": 400
     },
     "food": {
         "meals": 3000,
@@ -11,7 +10,13 @@
         "other": 500
     },
     "hotel": {
-        "totalCost": 12000,
-        "individualCost": 750
+        "totalCost": 12000
+    },
+    "originDestination": {
+        "origin": "Casa de Paola",
+        "destination": "Tapalpa",
+        "departureDate": "15/07/22",
+        "departureTime": "9:00 am",
+        "returnDate": "17/07/22"
     }
 }

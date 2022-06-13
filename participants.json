@@ -115,7 +115,13 @@
     {
         "name": "China",
         "isSponsored": false,
-        "payed": 0,
-        "logs": []
+        "payed": 1300,
+        "logs": [
+            {
+                "amount": 1300,
+                "type": "transferencia",
+                "date": "12 de Junio del 2022 23:22:20"
+            }
+        ]
     }
 ]
