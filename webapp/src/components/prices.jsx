@@ -1,56 +1,83 @@
 import React from 'react'
-import Card from 'react-bootstrap/Card'
+
 import CardGroup from 'react-bootstrap/CardGroup'
 
-const renderHotelPrice = ({ totalCost, individualCost }) => {
+import PriceCard from './priceCard';
+
+const renderPrice = (props) => {
     return (
-        <Card
-            bg={'info'}
-            text={'light'}
-            style={{ width: '18rem' }}
-            className="mb-2"
-        >
-            <Card.Title>Costo total del hospedaje: ${totalCost}</Card.Title>
-            <Card.Body>Costo por persona: ${individualCost}</Card.Body>
-        </Card>
+        <PriceCard {...props} />
     )
+}
+
+const renderHotelPrice = ({ totalCost, individualCost }) => {
+    const title = 'Hospedaje';
+    const tags = [
+        {
+            label: "Costo total del hospedaje",
+            value: totalCost
+        },
+        {
+            label: "Costo por persona",
+            value: individualCost
+        },
+    ];
+
+    return renderPrice({ title, tags })
 }
 
 const renderCarsPrice = ({ amount, gas, toll, cost, totalCost }) => {
-    return (
-        <Card
-            bg={'info'}
-            text={'light'}
-            style={{ width: '18rem' }}
-            className="mb-2"
-        >
-            <Card.Title>Costo total del transporte: ${totalCost}</Card.Title>
-            <Card.Body>
-                Costo de gasolina estimado por carro: ${gas}
-                Costo de casetas por carro: ${toll}
-                Numero de vehiculos: ${amount}
-                Costo por persona: ${cost}
-            </Card.Body>
-        </Card>
-    )
+    const title = 'Transporte';
+
+    const tags = [
+        {
+            label: "Costo total del transporte",
+            value: totalCost
+        },
+        {
+            label: "Costo de gasolina estimado por carro",
+            value: gas
+        },
+        {
+            label: "Costo de casetas por carro",
+            value: toll
+        },
+        {
+            label: "Numero de vehiculos",
+            value: amount
+        },
+        {
+            label: "Costo por persona",
+            value: cost
+        },
+    ];
+
+    return renderPrice({ title, tags })
+
 }
 
 const renderFoodPrice = ({ meals, drinks, other, totalCost }) => {
-    return (
-        <Card
-            bg={'info'}
-            text={'light'}
-            style={{ width: '18rem' }}
-            className="mb-2"
-        >
-            <Card.Title>Costo total de los insumos: ${totalCost}</Card.Title>
-            <Card.Body>
-                Costo de comida para todos: ${meals}
-                Costo de bebidas para todos: ${drinks}
-                costo de despensa en general: ${other}
-            </Card.Body>
-        </Card>
-    )
+    const title = 'Comida y bebida';
+    const tags = [
+        {
+            label: "Costo total de los insumos",
+            value: totalCost
+        },
+        {
+            label: "Costo de comida para todos",
+            value: meals
+        },
+        {
+            label: "Costo de bebidas para todos",
+            value: drinks
+        },
+        {
+            label: "costo de despensa en general",
+            value: other
+        },
+    ];
+
+    return renderPrice({ title, tags })
 }
 
 const Prices = ({ publicIndividualCost, hotel, food, cars }) => {

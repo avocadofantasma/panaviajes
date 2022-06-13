@@ -17,47 +17,31 @@ function App() {
     }).catch(
       err => console.error(err)
     )
-
   })
 
   const renderSummary = () => {
-    const { cost, participants, publicIndividualCost, totalPayed, totalPayedPercentage} = trip;
-    const props = { cost, participants, publicIndividualCost, totalPayed, totalPayedPercentage };
+    const { participants } = trip;
 
     return participants && (
-      <Summary {...props} />
+      <Summary {...trip} />
     )
   }
 
   const renderPrices = () => {
-    const { publicIndividualCost, hotel, food, cars } = trip;
-
-    const props = { publicIndividualCost, hotel, food, cars }
-
     return (
-      <Prices {...props} />
+      <Prices {...trip} />
     )
   }
 
   const renderParticipants = () => {
-    const { participants, publicIndividualCost } = trip;
-    const props = { participants, publicIndividualCost };
-
     return (
-      <Participants {...props} />
+      <Participants {...trip} />
     )
   }
 
   const renderTravelerProgress = () => {
-    const { participants, publicIndividualCost } = trip;
-    const props = { participants, publicIndividualCost };
-
-    participants.reduce((acc, { payed }, i) => {
-      return acc + payed
-    }, 0)
-
     return (
-      <TravelerProgress {...props} />
+      <TravelerProgress {...trip} />
     )
   }
 
@@ -68,10 +52,9 @@ function App() {
   return (
     <div className="App">
       {renderSummary()}
-      <Spacer />
+      {renderPrices()}
       {renderTravelerProgress()}
       <Spacer />
-      {renderPrices()}
       {renderParticipants()}
     </div>
   );

@@ -5,27 +5,23 @@ import CardGroup from 'react-bootstrap/CardGroup'
 import TotalCost from './totalCost';
 import TravelerSummary from './travelerSummary';
 
-const renderTotalCost = (cost, participants, publicIndividualCost, totalPayed, totalPayedPercentage) => {
-    const props = { cost, participants, publicIndividualCost, totalPayed, totalPayedPercentage };
-
+const renderTotalCost = (trip) => {
     return (
-        <TotalCost {...props} />
+        <TotalCost {...trip} />
     )
 }
 
-const renderTravelerSummary = (participants, publicIndividualCost) => {
-    const props = { publicIndividualCost, participants };
-
+const renderTravelerSummary = (trip) => {
     return (
-        <TravelerSummary {...props} />
+        <TravelerSummary {...trip} />
     )
 }
 
-const Summary = ({ cost, participants, publicIndividualCost, totalPayed, totalPayedPercentage }) => {
+const Summary = (trip) => {
     return (
         <CardGroup>
-            {renderTotalCost(cost, participants, publicIndividualCost, totalPayed, totalPayedPercentage)}
-            {renderTravelerSummary(participants, publicIndividualCost)}
+            {renderTotalCost(trip)}
+            {renderTravelerSummary(trip)}
         </CardGroup>
     )
 }

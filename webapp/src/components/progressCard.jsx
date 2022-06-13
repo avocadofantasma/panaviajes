@@ -38,7 +38,7 @@ const ProgressCard = ({ participant: { name, payed, isSponsored, logs }, publicI
             <Card
                 border={isCompleted ? "success" : ""}
                 style={{ width: '22rem' }}
-                className="mb-2 mx-2"
+                className="my-2 mx-2"
             >
                 <Card.Body>
                     <div>

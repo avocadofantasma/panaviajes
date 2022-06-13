@@ -1,19 +1,39 @@
 import React from 'react'
+
+import PriceCard from './priceCard';
 import Card from 'react-bootstrap/Card'
 
-const TravelerSummary = ({ participants, publicIndividualCost }) => {
-    return (
-        <Card
-            bg={'primary'}
-            text={'light'}
-            style={{ width: '18rem' }}
-            className="mb-2"
-        >
-            <Card.Title>Costo por persona: ${publicIndividualCost}</Card.Title>
+const TravelerSummary = ({ publicIndividualCost, participants, originDestination }) => {
+    const { departureTime, departureDate, returnDate, origin } = originDestination;
+    const title = `Vamos a ${originDestination.destination}`;
+    const isMoney = false;
+    const tags = [
+        {
+            label: "Invitados",
+            value: participants.length
+        },
+        {
+            label: "Hora de salida",
+            value: departureTime
+        },
+        {
+            label: "Nos vamos el",
+            isStr: true,
+            value: departureDate
+        },
+        {
+            label: "Volvemos el",
+            isStr: true,
+            value: returnDate
+        },
+        {
+            label: "Partimos de",
+            isStr: true,
+            value: origin
+        },
+    ];
 
-            <Card.Body>Cuantos panas vamos? {participants.length}</Card.Body>
-        </Card>
-    )
+    return <PriceCard {...{ title, tags, isMoney }} />
 }
 
 export default TravelerSummary
