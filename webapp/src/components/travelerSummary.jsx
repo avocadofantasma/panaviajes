@@ -3,7 +3,7 @@ import React from 'react'
 import PriceCard from './priceCard';
 import Card from 'react-bootstrap/Card'
 
-const TravelerSummary = ({ publicIndividualCost, participants, originDestination }) => {
+const TravelerSummary = ({ participants, originDestination }) => {
     const { departureTime, departureDate, returnDate, origin } = originDestination;
     const title = `Vamos a ${originDestination.destination}`;
     const isMoney = false;

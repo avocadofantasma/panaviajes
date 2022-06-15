@@ -1,25 +1,33 @@
-import './App.css';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
+import './App.css';
+import 'rsuite/dist/rsuite.min.css'
+
 import Summary from './components/summary';
 import Prices from './components/prices';
-import Participants from './components/participants';
-import Spacer from './components/spacing';
 import TravelerProgress from './components/travelerProgress';
+import TripList from './components/tripList';
+import Footer from './components/footer';
 
 function App() {
-  const [trip, setTrip] = useState({});
+  const [trips, setTrips] = useState({
+    activeTrip: 0,
+    items: []
+  })
 
   useEffect(() => {
-    axios.get('http://localhost:3001/trip').then(({ data }) => {
-      setTrip(data)
+    axios.get(`${window.location.origin.replace('3000', '3001')}/trips`).then(({ data }) => {
+      setTrips({
+        items: data,
+        activeTrip: 0
+      });
     }).catch(
       err => console.error(err)
     )
-  })
+  }, [])
 
-  const renderSummary = () => {
+  const renderSummary = (trip) => {
     const { participants } = trip;
 
     return participants && (
@@ -27,35 +35,33 @@ function App() {
     )
   }
 
-  const renderPrices = () => {
-    return (
+  const renderPrices = (trip) => {
+    const { isTravel } = trip;
+
+    return isTravel && (
       <Prices {...trip} />
     )
   }
 
-  const renderParticipants = () => {
-    return (
-      <Participants {...trip} />
-    )
-  }
-
-  const renderTravelerProgress = () => {
+  const renderTravelerProgress = (trip) => {
     return (
       <TravelerProgress {...trip} />
     )
   }
 
-  if (!trip.participants) {
+  const trip = trips.items[trips.activeTrip];
+
+  if (!trip) {
     return null;
   }
 
   return (
-    <div className="App">
-      {renderSummary()}
-      {renderPrices()}
-      {renderTravelerProgress()}
-      <Spacer />
-      {renderParticipants()}
+    <div className="App pt-2">
+      <TripList {...trips} setTrips={setTrips} />
+      {renderSummary(trip)}
+      {renderPrices(trip)}
+      {renderTravelerProgress(trip)}
+      <Footer />
     </div>
   );
 }

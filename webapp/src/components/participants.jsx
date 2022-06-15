@@ -13,6 +13,10 @@ const renderRow = ({ name, payed }, i, publicIndividualCost) => {
 }
 
 const Participants = ({ participants, publicIndividualCost }) => {
+    if (participants.length < 1) {
+        return null;
+    }
+
     return (
         <div>
             <Table responsive="sm" striped bordered hover variant="dark">

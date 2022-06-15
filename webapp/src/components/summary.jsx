@@ -19,7 +19,7 @@ const renderTravelerSummary = (trip) => {
 
 const Summary = (trip) => {
     return (
-        <CardGroup>
+        <CardGroup className=''>
             {renderTotalCost(trip)}
             {renderTravelerSummary(trip)}
         </CardGroup>
