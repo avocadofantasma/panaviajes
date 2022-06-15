@@ -44,6 +44,7 @@ const renderCarsPrice = ({ amount, gas, toll, cost, totalCost }) => {
         },
         {
             label: "Numero de vehiculos",
+            isStr: true,
             value: amount
         },
         {

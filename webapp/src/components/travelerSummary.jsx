@@ -1,20 +1,21 @@
 import React from 'react'
 
 import PriceCard from './priceCard';
-import Card from 'react-bootstrap/Card'
 
 const TravelerSummary = ({ participants, originDestination }) => {
     const { departureTime, departureDate, returnDate, origin } = originDestination;
     const title = `Vamos a ${originDestination.destination}`;
-    const isMoney = false;
     const tags = [
         {
             label: "Invitados",
-            value: participants.length
+            value: participants.length,
+            isStr: true
+
         },
         {
             label: "Hora de salida",
-            value: departureTime
+            value: departureTime,
+            isStr: true
         },
         {
             label: "Nos vamos el",
@@ -33,7 +34,7 @@ const TravelerSummary = ({ participants, originDestination }) => {
         },
     ];
 
-    return <PriceCard {...{ title, tags, isMoney }} />
+    return <PriceCard {...{ title, tags }} />
 }
 
 export default TravelerSummary

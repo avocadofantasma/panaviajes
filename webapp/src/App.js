@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
+import Logo from './logo.jsx'
 import './App.css';
 import 'rsuite/dist/rsuite.min.css'
 
@@ -56,7 +57,10 @@ function App() {
   }
 
   return (
-    <div className="App pt-2">
+    <div className="App mb-2 bg-white">
+      <div className='text-center bg-dark'>
+        <Logo />
+      </div>
       <TripList {...trips} setTrips={setTrips} />
       {renderSummary(trip)}
       {renderPrices(trip)}
