@@ -1,0 +1,35 @@
+{
+    "id": 1,
+    "publicIndividualCost": 0,
+    "assets": 0,
+    "totalCashReceived": 0,
+    "leadToPay": 0,
+    "totalCash": 0,
+    "surplusTotal": 0,
+    "surplus": 0,
+    "totalPayed": 0,
+    "totalPayedPercentage": 0,
+    "cars": {
+        "amount": 3,
+        "gas": 500,
+        "toll": 400
+    },
+    "food": {
+        "meals": 3000,
+        "drinks": 2000,
+        "other": 500
+    },
+    "hotel": {
+        "totalCost": 12000
+    },
+    "originDestination": {
+        "origin": "Casa de Paola",
+        "destination": "Tapalpa",
+        "departureDate": "15/07/22",
+        "departureTime": "9:00 am",
+        "returnDate": "17/07/22"
+    },
+    "participants": [
+       
+    ]
+}

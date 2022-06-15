@@ -3,14 +3,10 @@ const cors = require('cors')
 const app = express()
 const port = 3001
 
-
-const PARTICIPANTS = require('./participants.json');
-const EXPENSES = require('./expenses.json');
-
-const trip = {
-    participants: PARTICIPANTS,
-    ...EXPENSES
-};
+const TRIP_TAPALPA = require('./trip_tapalpa.json');
+const TRIP_CANCUN = require('./trip_cancun.json');
+const TRIP_THOR = require('./trip_thor.json');
+const TRIPS = [TRIP_TAPALPA, TRIP_CANCUN, TRIP_THOR];
 
 const getRoundedToNextHundred = (cost) => {
     const costStr = "" + cost;
@@ -51,20 +47,21 @@ const setHotel = (trip) => {
 const setParticipants = (trip) => {
     const { cost, participants } = trip;
 
-
     trip.individualCost = parseInt(cost / participants.length);
-
 }
 
 const setTotalCost = trip => trip.cost = trip.hotel.totalCost + trip.food.totalCost + trip.cars.totalCost;
 
 const setCosts = trip => {
-    const { participants = [] } = trip;
+    const { participants } = trip;
+    if (participants.length < 1) {
+        return;
+    }
+
     const sponsored = participants.filter(participant => participant.isSponsored).length;
     const totalPayed = participants.reduce((acc, { payed }) => {
         return acc + payed
-    }, 0)
-
+    }, 0);
 
     trip.publicIndividualCost = getRoundedToNextHundred(trip.individualCost);
     trip.assets = participants.length - sponsored
@@ -77,18 +74,16 @@ const setCosts = trip => {
     trip.totalPayedPercentage = (100 * (totalPayed / trip.cost)).toFixed(2)
 }
 
-const createNewTrip = trip => {
+const setTripPrices = trip => {
     setCars(trip);
     setFood(trip);
     setHotel(trip);
-
     setTotalCost(trip);
-
     setParticipants(trip);
     setCosts(trip);
-}
 
-createNewTrip(trip);
+    return trip;
+}
 
 app.use(cors())
 
@@ -96,12 +91,12 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-app.get('/trip', (req, res) => {
-    res.send(trip)
+app.get('/trips', (req, res) => {
+    res.send(TRIPS.map(trip => setTripPrices(trip)))
 })
 
 app.get('/participants', (req, res) => {
-    res.send(PARTICIPANTS)
+    res.send(trip.participants)
 })
 
 app.listen(port, () => {
