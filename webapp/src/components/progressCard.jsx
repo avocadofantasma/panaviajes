@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Card from 'react-bootstrap/Card'
 import ProgressBar from 'react-bootstrap/ProgressBar'
@@ -7,6 +7,8 @@ import Col from 'react-bootstrap/Col'
 import { FcLike } from "react-icons/fc";
 
 import { formatCurrency } from '../utils.js';
+
+import ConfirmDialog from './confirmDialog.jsx'
 
 const renderPayedPill = (isCompleted) => {
     if (!isCompleted) {
@@ -20,12 +22,11 @@ const renderPayedPill = (isCompleted) => {
     )
 }
 
-const renderConfirmedPill = (hasConfirmed) => {
-    return (
-        <Badge pill bg={hasConfirmed ? "info" : "warning"}>
-            {hasConfirmed ? "Confirmado" : "Sin confirmar"}
-        </Badge>
-    )
+const renderConfirmedPill = (hasConfirmed, openConfirmationModal, setopenConfirmationModal, handleSubmit) => {
+    if (hasConfirmed) {
+        return <Badge pill bg={"info"}>Confirmado</Badge>
+    }
+    return <ConfirmDialog openConfirmationModal={openConfirmationModal} setopenConfirmationModal={setopenConfirmationModal} handleSubmit={handleSubmit} />
 }
 
 const renderLastPayment = (lastPayment) => {
@@ -36,10 +37,16 @@ const renderLastPayment = (lastPayment) => {
     )
 }
 
-const ProgressCard = ({ participant: { name, payed, isSponsored, logs, hasConfirmed }, publicIndividualCost, shouldDisplayDetail }) => {
+const ProgressCard = ({ participant: { name, payed, isSponsored, logs, hasConfirmed }, publicIndividualCost, shouldDisplayDetail, handleConfirmParticipant }) => {
+    const [openConfirmationModal, setOpenConfirmationModal] = useState(false)
+    const handleSubmit = () => {
+        handleConfirmParticipant(name)
+        setOpenConfirmationModal(false)
+    };
+
     const percentage = Math.round(parseFloat(100 * (payed / publicIndividualCost)))
     const isCompleted = payed === publicIndividualCost;
-    const lastPayment = logs.at(-1);
+    const lastPayment = logs?.at(-1);
 
     const borderStyle = isCompleted ? "success" : hasConfirmed ? "info" : "warning";
 
@@ -52,7 +59,7 @@ const ProgressCard = ({ participant: { name, payed, isSponsored, logs, hasConfir
                         {` ${name}`}:
                     </div>
                     {renderPayedPill(isCompleted)}
-                    {!isCompleted && renderConfirmedPill(hasConfirmed)}
+                    {!isCompleted && renderConfirmedPill(hasConfirmed, openConfirmationModal, setOpenConfirmationModal, handleSubmit)}
                     <div>
                         ${payed} / ${publicIndividualCost}
                     </div>
@@ -73,7 +80,7 @@ const ProgressCard = ({ participant: { name, payed, isSponsored, logs, hasConfir
                         {` ${name}`}:
                     </div>
                     {renderPayedPill(isCompleted)}
-                    {!isCompleted && renderConfirmedPill(hasConfirmed)}
+                    {!isCompleted && renderConfirmedPill(hasConfirmed, openConfirmationModal, setOpenConfirmationModal, handleSubmit)}
                 </Card.Body>
             </>
         )

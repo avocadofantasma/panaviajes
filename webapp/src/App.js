@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 import Logo from './logo.jsx'
@@ -11,6 +10,8 @@ import TravelerProgress from './components/travelerProgress';
 import TripList from './components/tripList';
 import Footer from './components/footer';
 
+import { getTrips } from './requests.js';
+
 function App() {
   const [trips, setTrips] = useState({
     activeTrip: 0,
@@ -18,14 +19,14 @@ function App() {
   })
 
   useEffect(() => {
-    axios.get(`${window.location.origin.replace('3000', '3001')}/trips`).then(({ data }) => {
+    const fetchTrips = async () => {
+      const { data } = await getTrips();
       setTrips({
         items: data,
         activeTrip: 0
       });
-    }).catch(
-      err => console.error(err)
-    )
+    }
+    fetchTrips();
   }, [])
 
   const renderSummary = (trip) => {
@@ -44,9 +45,9 @@ function App() {
     )
   }
 
-  const renderTravelerProgress = (trip) => {
+  const renderTravelerProgress = (trip, setTrips) => {
     return (
-      <TravelerProgress {...trip} />
+      <TravelerProgress trip={trip} setTrips={setTrips} />
     )
   }
 
@@ -64,7 +65,7 @@ function App() {
       <TripList {...trips} setTrips={setTrips} />
       {renderSummary(trip)}
       {renderPrices(trip)}
-      {renderTravelerProgress(trip)}
+      {renderTravelerProgress(trip, setTrips)}
       <Footer />
     </div>
   );
