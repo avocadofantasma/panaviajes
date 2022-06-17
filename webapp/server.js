@@ -4,7 +4,7 @@ const path = require('path');
 const redis = require("redis");
 
 const app = express()
-const port = 3001
+const port = process.env.PORT || 3001;
 
 
 const client = process.env.REDIS_URL ? redis.createClient({ url: process.env.REDIS_URL }) : redis.createClient();
@@ -12,13 +12,6 @@ client.connect().then(data => {
     console.log('connected to redis herokus: ', data)
 }).catch(err => console.log('not connected: ', err));
 client.ping().then(ping => console.log('ping: ', ping))
-
-const TRIP_TAPALPA = require('./trip_tapalpa.json');
-const TRIP_CANCUN = require('./trip_cancun.json');
-const TRIP_THOR = require('./trip_thor.json');
-const TRIPS = [TRIP_TAPALPA, TRIP_CANCUN, TRIP_THOR];
-
-console.clear()
 
 const getRoundedToNextHundred = (cost) => {
     const costStr = "" + cost;
@@ -119,9 +112,12 @@ const calculateTripPrices = async id => {
     await client.lSet('trips', id, JSON.stringify(trip));
 }
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.get('/prices/:id', async (req, res) => {
     const id = req.params.id;
