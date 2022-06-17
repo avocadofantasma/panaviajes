@@ -1,6 +1,6 @@
 {
-  "name": "client",
-  "version": "0.1.0",
+  "name": "Pana app",
+  "version": "0.1.1",
   "engines": {
     "npm": ">=8.3.0",
     "node": ">=16.0.0"
@@ -35,7 +35,7 @@
     "postinstall": "npm run build",
     "build": "react-scripts build",
     "dev": "react-scripts start",
-    "start": "node server.js",
+    "start": "node server/server.mjs",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -56,5 +56,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0"
   }
 }

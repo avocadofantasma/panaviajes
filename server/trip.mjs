@@ -1,17 +1,3 @@
-const express = require('express')
-const cors = require('cors')
-const path = require('path');
-const redis = require("redis");
-
-const app = express()
-const port = process.env.PORT || 3001;
-
-
-const client = process.env.REDIS_URL ? redis.createClient({ url: process.env.REDIS_URL }) : redis.createClient();
-client.connect().then(data => {
-    console.log('connected to redis herokus: ', data)
-}).catch(err => console.log('not connected: ', err));
-client.ping().then(ping => console.log('ping: ', ping))
 
 const getRoundedToNextHundred = (cost) => {
     const costStr = "" + cost;
@@ -81,7 +67,6 @@ const setCosts = trip => {
 }
 
 const setTripPrices = trip => {
-
     if (trip.type === 'movie') {
         setMovieTotalCost(trip);
     } else {
@@ -98,81 +83,9 @@ const setTripPrices = trip => {
     return trip;
 }
 
-app.use(cors())
-app.use(express.json())
-
-const getTrips = async () => {
-    try {
-        const trips = await client.lRange('trips', 0, -1);
-
-        return (trips.map(trip => JSON.parse(trip)))
-    } catch (err) {
-        console.log('error while fetching....', err)
-    }
-
-}
-
-const calculateTripPrices = async id => {
+export const calculateTripPrices = async id => {
     console.log('calculating costs...', id);
 
     const trip = setTripPrices(JSON.parse(await client.lIndex(`trips`, id)))
     await client.lSet('trips', id, JSON.stringify(trip));
 }
-
-
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
-app.get('/prices/:id', async (req, res) => {
-    const id = req.params.id;
-    await calculateTripPrices(id)
-
-    res.send(await getTrips())
-});
-
-app.get('/nukeTrips', async (req, res) => {
-    console.log('getting trips...');
-
-    const trips = await client.flushAll();
-
-    res.send(trips)
-})
-
-app.get('/trip/:id', async (req, res) => {
-    const id = req.params.id;
-    console.log('getting trip...', req.params.id);
-    const trip = await client.lIndex(`trips`, id)
-    res.send(trip)
-})
-
-app.put('/trip/:id', async (req, res) => {
-    console.log('updating trip...', req.params.id);
-    const id = req.params.id;
-    const newTrip = req.body;
-    await client.lSet('trips', id, JSON.stringify(newTrip))
-    await calculateTripPrices(id);
-
-    res.send(await getTrips())
-})
-
-app.post('/trip', async (req, res) => {
-    const trip = req.body;
-    const newId = await client.lLen('trips');
-    trip.id = newId;
-    await client.rPush("trips", JSON.stringify(trip));
-    res.send(getTrips())
-})
-
-app.get('/trips', async (req, res) => {
-    console.log('getting trips...');
-
-    res.send(await getTrips())
-})
-
-app.listen(port, (err) => {
-    if (err) console.log(err);
-    console.log(`Example app listening on port ${port}`)
-})
