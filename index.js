@@ -159,25 +159,6 @@ app.get('/trips', async (req, res) => {
     res.send(await getTrips())
 })
 
-app.get('/tripList', async (req, res) => {
-    console.log('getting tripList...');
-    let trips = await client.lRange('trips', 0, -1);
-
-    res.send(trips)
-})
-
-app.post('/tripList', async (req, res) => {
-    console.log('creating trip...');
-    const val = await client.lPush('trips', JSON.stringify(TRIP_TAPALPA));
-    console.log(val)
-    res.send('200')
-})
-
-
-app.get('/participants', (req, res) => {
-    res.send(trip.participants)
-})
-
 app.listen(port, (err) => {
     if (err) console.log(err);
     console.log(`Example app listening on port ${port}`)

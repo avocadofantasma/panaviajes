@@ -19,9 +19,9 @@ const ParticipantModal = ({ open, handleClose, formValue, onFormChange, onSubmit
               <Form.HelpText>Si no sé quién eres... ¿Cómo vasir?</Form.HelpText>
             </Form.Group>
             <Form.Group controlId="hasConfirmed">
-              <Form.ControlLabel>Nombre, apodo o fetiche</Form.ControlLabel>
+              <Form.ControlLabel></Form.ControlLabel>
               <Form.Control name="checkboxInput" accepter={'checkboxGroup'}  inline>
-                <Checkbox value={'checkvalue'}>Confirmas?</Checkbox>
+                <Checkbox value={'checkvalue'}>{formValue.name && `¡Hey, ${formValue.name}!`} ¿Confirmas?</Checkbox>
               </Form.Control>
               <Form.HelpText>Puedes confirmar después. Quedar mal despues de confirmar significa baneo automatico.</Form.HelpText>
             </Form.Group>

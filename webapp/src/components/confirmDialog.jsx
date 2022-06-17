@@ -24,12 +24,14 @@ const ConfirmDialog = ({ openConfirmationModal, setopenConfirmationModal, handle
                         />
                     </div>
                     Confirmar significa que vas a cubrir tu parte para el costo total. Confirmar y no cubrir tu parte significa baneo inmediato para futuros viajes.
+                    <hr />
+                    Una vez confirmado no se puede cancelar
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={handleSubmit} appearance="primary">
                         Ok
                     </Button>
-                    <Button onClick={handleClose} appearance="subtle">
+                    <Button onClick={handleClose} appearance="secondary">
                         Cancel
                     </Button>
                 </Modal.Footer>
