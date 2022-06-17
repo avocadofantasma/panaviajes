@@ -1,2 +1,0 @@
-REDIS_URL=redis://:pa2b50d435374d053d0f08dc33268e8f732426ff15c8b187877b546ab3eca63f6@ec2-34-224-248-220.compute-1.amazonaws.com:6949
-REDIS_TLS_URL: rediss://:pa2b50d435374d053d0f08dc33268e8f732426ff15c8b187877b546ab3eca63f6@ec2-34-224-248-220.compute-1.amazonaws.com:6950
