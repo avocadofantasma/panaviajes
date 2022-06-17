@@ -3,6 +3,7 @@
         "name": "Carlos",
         "isSponsored": true,
         "payed": 1100,
+        "hasConfirmed": true,
         "logs": [
             {
                 "amount": 1000,
@@ -14,6 +15,7 @@
     {
         "name": "Fany",
         "isSponsored": true,
+        "hasConfirmed": true,
         "payed": 400,
         "logs": [
             {
@@ -33,6 +35,7 @@
         "name": "Layan",
         "isSponsored": false,
         "payed": 1300,
+        "hasConfirmed": true,
         "logs": [
             {
                 "amount": 400,
@@ -97,6 +100,7 @@
     {
         "name": "Juanca",
         "isSponsored": false,
+        "hasConfirmed": true,
         "payed": 0,
         "logs": []
     },
@@ -115,7 +119,13 @@
     {
         "name": "China",
         "isSponsored": false,
-        "payed": 0,
-        "logs": []
+        "payed": 1300,
+        "logs": [
+            {
+                "amount": 1300,
+                "type": "transferencia",
+                "date": "12 de Junio del 2022 23:22:20"
+            }
+        ]
     }
 ]

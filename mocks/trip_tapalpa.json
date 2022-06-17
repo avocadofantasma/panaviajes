@@ -1,0 +1,167 @@
+{
+    "id": 1,
+    "title": "Tapalpa 2022",
+    "type": "Bosque",
+    "subtitle": "Cabaña",
+    "isTravel": true,
+    "publicIndividualCost": 0,
+    "assets": 0,
+    "totalCashReceived": 0,
+    "leadToPay": 0,
+    "totalCash": 0,
+    "surplusTotal": 0,
+    "surplus": 0,
+    "totalPayed": 0,
+    "totalPayedPercentage": 0,
+    "cars": {
+        "amount": 3,
+        "gas": 500,
+        "toll": 400
+    },
+    "food": {
+        "meals": 3000,
+        "drinks": 2000,
+        "other": 500
+    },
+    "hotel": {
+        "totalCost": 12000
+    },
+    "originDestination": {
+        "origin": "Casa de Paola",
+        "destination": "Tapalpa",
+        "departureDate": "15/07/22",
+        "departureTime": "9:00 am",
+        "returnDate": "17/07/22"
+    },
+    "participants": [
+        {
+            "name": "Carlos",
+            "isSponsored": true,
+            "payed": 1100,
+            "hasConfirmed": true,
+            "logs": [
+                {
+                    "amount": 1000,
+                    "type": "efectivo",
+                    "date": "12 de Junio del 2022 23:22:20"
+                }
+            ]
+        },
+        {
+            "name": "Fany",
+            "isSponsored": true,
+            "hasConfirmed": true,
+            "payed": 400,
+            "logs": [
+                {
+                    "amount": 200,
+                    "type": "transferencia",
+                    "date": "12 de Junio del 2022 23:22:20"
+                }
+            ]
+        },
+        {
+            "name": "Valeria",
+            "isSponsored": false,
+            "payed": 350,
+            "logs": []
+        },
+        {
+            "name": "Layan",
+            "isSponsored": false,
+            "payed": 1300,
+            "hasConfirmed": true,
+            "logs": [
+                {
+                    "amount": 400,
+                    "type": "efectivo",
+                    "date": "12 de Junio del 2022 23:22:20"
+                },
+                {
+                    "amount": 900,
+                    "type": "transferencia",
+                    "date": "12 de Junio del 2022 23:26:20"
+                }
+            ]
+        },
+        {
+            "name": "Paola",
+            "isSponsored": false,
+            "payed": 100,
+            "logs": []
+        },
+        {
+            "name": "Rafa",
+            "isSponsored": false,
+            "payed": 0,
+            "logs": []
+        },
+        {
+            "name": "Silvia",
+            "isSponsored": false,
+            "payed": 0,
+            "logs": []
+        },
+        {
+            "name": "Karen",
+            "isSponsored": false,
+            "payed": 0,
+            "logs": []
+        },
+        {
+            "name": "Tany",
+            "isSponsored": false,
+            "payed": 14000,
+            "logs": []
+        },
+        {
+            "name": "Daniel",
+            "isSponsored": false,
+            "payed": 0,
+            "logs": []
+        },
+        {
+            "name": "Viviana",
+            "isSponsored": false,
+            "payed": 0,
+            "logs": []
+        },
+        {
+            "name": "Jona",
+            "isSponsored": false,
+            "payed": 0,
+            "logs": []
+        },
+        {
+            "name": "Juanca",
+            "isSponsored": false,
+            "hasConfirmed": true,
+            "payed": 0,
+            "logs": []
+        },
+        {
+            "name": "Fran",
+            "isSponsored": false,
+            "payed": 0,
+            "logs": []
+        },
+        {
+            "name": "Miguel",
+            "isSponsored": false,
+            "payed": 0,
+            "logs": []
+        },
+        {
+            "name": "China",
+            "isSponsored": false,
+            "payed": 1300,
+            "logs": [
+                {
+                    "amount": 1300,
+                    "type": "transferencia",
+                    "date": "12 de Junio del 2022 23:22:20"
+                }
+            ]
+        }
+    ]
+}

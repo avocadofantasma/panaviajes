@@ -5,13 +5,14 @@ import Card from 'react-bootstrap/Card'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
+import { Badge } from 'react-bootstrap'
 
-import { formatCurrency } from '../utils';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import PriceTag from './priceTag';
+
 import 'react-circular-progressbar/dist/styles.css';
 
-const TotalCost = ({ cost, participants, publicIndividualCost, totalPayed, totalPayedPercentage }) => {
-
+const TotalCost = ({ cost, publicIndividualCost, totalPayed, totalPayedPercentage, title, type }) => {
     const progressProps = {
         circleRatio: .75,
         styles: buildStyles({
@@ -43,39 +44,31 @@ const TotalCost = ({ cost, participants, publicIndividualCost, totalPayed, total
         {
             label: 'Costo por persona',
             value: publicIndividualCost
-        },
-        {
-            label: 'Numero de panas',
-            value: participants.length
-        },
+        }
     ];
-
-    const renderLabel = ({ label, value }) => {
-        return (
-            <div key={value + "label"} className='p-2 d-flex justify-content-between w-100'>
-                <div className='text-muted'>{label}:</div>
-                <div>{formatCurrency(value)}</div>
-            </div>
-        )
-    }
 
     return (
         <Card
             text={'dark'}
-            style={{ width: '18rem' }}
-            className="mb-2"
         >
-            <Card.Title></Card.Title>
+            <Card.Title className='mx-auto p-2 text-center'>
+                <div>
+                    {title}
+                </div>
+                <Badge pill bg="primary">
+                    {type}
+                </Badge>
+            </Card.Title>
             <Card.Body>
                 <Container>
                     <Row>
                         <Col sm={5}>
-                            <div style={{ width: 200, height: 200 }}>
+                            <div className='mx-auto w-60' >
                                 <CircularProgressbar {...progressProps} />
                             </div>
                         </Col>
                         <Col sm={7} className='d-flex flex-wrap '>
-                            {labels.map((label) => renderLabel(label))}
+                            {labels.map((label) => <PriceTag {...label} key={`${label.label}-${label.value}`}/>)}
                         </Col>
                     </Row>
                 </Container>
