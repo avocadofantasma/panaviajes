@@ -1,3 +1,17 @@
+.idea/
+.vscode/
+node_modules/
+build/
+.DS_Store
+*.tgz
+my-app*
+template/src/__tests__/__snapshots__/
+lerna-debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/.changelog
+.npm/
 # Logs
 logs
 *.log
@@ -103,17 +117,3 @@ dist
 
 # TernJS port file
 .tern-port
-.idea/
-.vscode/
-node_modules/
-build/
-.DS_Store
-*.tgz
-my-app*
-template/src/__tests__/__snapshots__/
-lerna-debug.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-/.changelog
-.npm/
