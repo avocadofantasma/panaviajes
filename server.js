@@ -56,6 +56,7 @@ const setParticipants = (trip) => {
 }
 
 const setTotalCost = trip => trip.cost = trip.hotel.totalCost + trip.food.totalCost + trip.cars.totalCost;
+const setMovieTotalCost = trip => trip.cost = trip.publicIndividualCost * trip.participants.length;
 
 const setCosts = trip => {
     const { participants } = trip;
@@ -80,12 +81,18 @@ const setCosts = trip => {
 }
 
 const setTripPrices = trip => {
-    setCars(trip);
-    setFood(trip);
-    setHotel(trip);
-    setTotalCost(trip);
-    setParticipants(trip);
-    setCosts(trip);
+
+    if (trip.type === 'movie') {
+        setMovieTotalCost(trip);
+    } else {
+        setCars(trip);
+        setFood(trip);
+        setHotel(trip);
+        setTotalCost(trip);
+        setParticipants(trip);
+        setCosts(trip);
+    }
+
     trip.initialized = true;
 
     return trip;

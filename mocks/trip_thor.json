@@ -1,10 +1,9 @@
 {
-    "id": 3,
     "title": "Thor Love and thunder",
-    "type": "Cine",
+    "type": "movie",
     "subtitle": "Ida al cine",
     "isTravel": false,
-    "publicIndividualCost": 0,
+    "publicIndividualCost": 90,
     "assets": 0,
     "totalCashReceived": 0,
     "leadToPay": 0,
@@ -13,24 +12,11 @@
     "surplus": 0,
     "totalPayed": 0,
     "totalPayedPercentage": 0,
-    "cars": {
-        "amount": 3,
-        "gas": 500,
-        "toll": 400
-    },
-    "food": {
-        "meals": 3000,
-        "drinks": 2000,
-        "other": 500
-    },
-    "hotel": {
-        "totalCost": 12000
-    },
     "originDestination": {
         "origin": "Casa de Paola",
         "destination": "Thor",
         "departureDate": "8/07/22",
-        "departureTime": "9:00 am",
+        "departureTime": "TBD",
         "returnDate": "8/07/22"
     },
     "participants": [
