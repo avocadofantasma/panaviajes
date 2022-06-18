@@ -7,7 +7,6 @@ import { calculateTripPrices } from "./trip.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 
-
 const app = express();
 const port = process.env.PORT || 3001;
 
