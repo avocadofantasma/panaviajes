@@ -1,5 +1,5 @@
-import React from 'react'
-import Table from 'react-bootstrap/Table';
+import React from "react";
+import Table from "react-bootstrap/Table";
 
 const renderRow = ({ name, payed }, i, publicIndividualCost) => {
     return (
@@ -9,8 +9,8 @@ const renderRow = ({ name, payed }, i, publicIndividualCost) => {
             <td>{payed}</td>
             <td>{publicIndividualCost - payed}</td>
         </tr>
-    )
-}
+    );
+};
 
 const Participants = ({ participants, publicIndividualCost }) => {
     if (participants.length < 1) {
@@ -29,13 +29,14 @@ const Participants = ({ participants, publicIndividualCost }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        participants && participants.map((pana, i) => renderRow(pana, i, publicIndividualCost))
-                    }
+                    {participants &&
+                        participants.map((pana, i) =>
+                            renderRow(pana, i, publicIndividualCost)
+                        )}
                 </tbody>
             </Table>
         </div>
-    )
-}
+    );
+};
 
-export default Participants
+export default Participants;
