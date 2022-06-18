@@ -33,6 +33,7 @@
     "proxy": "http://localhost:3001",
     "scripts": {
         "postinstall": "npm run build",
+        "pretty": "npx prettier --write .",
         "build": "react-scripts build",
         "dev": "react-scripts start",
         "start": "node server/server.mjs",
