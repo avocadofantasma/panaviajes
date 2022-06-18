@@ -37,7 +37,8 @@
         "dev": "react-scripts start",
         "start": "node server/server.mjs",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "prepare": "husky install"
     },
     "eslintConfig": {
         "extends": [
@@ -59,6 +60,8 @@
     },
     "devDependencies": {
         "@types/node": "^18.0.0",
-        "prettier": "2.7.1"
+        "husky": "^8.0.0",
+        "prettier": "2.7.1",
+        "pretty-quick": "^3.1.3"
     }
 }
