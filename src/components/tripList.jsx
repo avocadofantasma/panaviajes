@@ -12,7 +12,7 @@ const renderButton = (activeTrip, index, item, setActive) => {
     return (
         <Button
             appearance={getAppearance(activeTrip, index)}
-            key={`${item.title}-nav`}
+            key={`${item.title}-nav-${index}`}
             onClick={onClickHandler}
             block
         >

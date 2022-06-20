@@ -27,13 +27,13 @@ export const updateTrip = async (trip) => {
 };
 
 export const getTrip = async (id) => {
-    return await axios.get(`/trip/${id}`).data;
+    return await axios.get(`/trip/${id}`);
 };
 
 export const deleteAllTrips = async () => {
-    return await axios.get(`/nukeTrips`).data;
+    return await axios.get(`/nukeTrips`);
 };
 
-export const calculateTripPrices = async (id, setTrips) => {
-    return await axios.get(`/prices/${id}`).data;
+export const calculateTripPrices = async (id) => {
+    return await axios.get(`/prices/${id}`);
 };

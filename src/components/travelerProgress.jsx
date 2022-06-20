@@ -11,7 +11,9 @@ const renderProgressCard = (
     participant,
     publicIndividualCost,
     shouldDisplayDetail,
-    handleConfirmParticipant
+    handleConfirmParticipant,
+    id,
+    index
 ) => {
     const props = {
         participant,
@@ -20,11 +22,16 @@ const renderProgressCard = (
         handleConfirmParticipant,
     };
 
-    return <ProgressCard {...props} key={`${participant.name}progress-card`} />;
+    return (
+        <ProgressCard
+            {...props}
+            key={`${participant.name}-trip-${id}-${index}-progress-card`}
+        />
+    );
 };
 
 const renderParticipants = (
-    { participants, publicIndividualCost },
+    { participants, publicIndividualCost, id },
     shouldDisplayDetail,
     handleConfirmParticipant
 ) => {
@@ -34,12 +41,14 @@ const renderParticipants = (
         </h4>
     );
     return participants.length > 0
-        ? participants.map((participant) =>
+        ? participants.map((participant, i) =>
               renderProgressCard(
                   participant,
                   publicIndividualCost,
                   shouldDisplayDetail,
-                  handleConfirmParticipant
+                  handleConfirmParticipant,
+                  id,
+                  i
               )
           )
         : emptyMarkup;
@@ -72,7 +81,7 @@ const confirmParticipant = async (trip, name) => {
     return data;
 };
 
-function TravelerProgress({ trip, setTrips }) {
+function TravelerProgress({ trip, setTrip }) {
     const [shouldDisplayDetail, setShouldDisplayDetail] = useState(false);
     const [open, setOpen] = useState(false);
     const handleClose = () => setOpen(false);
@@ -82,11 +91,8 @@ function TravelerProgress({ trip, setTrips }) {
     });
 
     const handleConfirmParticipant = async (name) => {
-        const trips = await confirmParticipant(trip, name);
-        setTrips({
-            items: trips,
-            activeTrip: trip?.id,
-        });
+        const newTrip = await confirmParticipant(trip, name);
+        setTrip(newTrip);
     };
 
     const onSubmit = async (event) => {
@@ -99,10 +105,7 @@ function TravelerProgress({ trip, setTrips }) {
 
         const { data } = await updateTrip(trip);
 
-        setTrips({
-            items: data,
-            activeTrip: trip?.id,
-        });
+        setTrip(data);
 
         handleClose();
     };

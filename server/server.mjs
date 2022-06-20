@@ -59,8 +59,8 @@ app.put("/trip/:id", async (req, res) => {
     const newTrip = req.body;
     await client.lSet("trips", id, JSON.stringify(newTrip));
     await calculateTripPrices(id, client);
-
-    res.send(await getTrips());
+    const trip = await client.lIndex(`trips`, id);
+    res.send(trip);
 });
 
 app.post("/trip", async (req, res) => {
