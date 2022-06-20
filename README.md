@@ -1,20 +1,20 @@
-# To run the project
+_# To run the project_
 
--   nstall dependencies
+-   install dependencies
 
 ```
 npm i
 ```
 
 -   install redis-cli
-    Open three terminals:
+-   Open three terminals:
 
 1. Run `redis-server` to start the database
 2. `nodemon server/serverj.mjs` to run the server
 3. `npm run dev` to run the app locally
 
 if no trip is showing up run this post request to create an empty trip
-i use this extension to create request:
+I use this extension to create request:
 
 REST Client
 VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=humao.rest-client
