@@ -96,6 +96,9 @@ function TravelerProgress({ trip, setTrip }) {
     };
 
     const onSubmit = async (event) => {
+        event.preventDefault();
+        event.target.disabled = true;
+
         trip?.participants?.push({
             ...formValue,
             isSponsored: false,
