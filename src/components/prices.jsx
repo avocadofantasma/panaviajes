@@ -1,85 +1,82 @@
-import React from 'react'
+import React from "react";
 
-import CardGroup from 'react-bootstrap/CardGroup'
+import CardGroup from "react-bootstrap/CardGroup";
 
-import PriceCard from './priceCard';
+import PriceCard from "./priceCard";
 
 const renderPrice = (props) => {
-    return (
-        <PriceCard {...props} />
-    )
-}
+    return <PriceCard {...props} />;
+};
 
 const renderHotelPrice = ({ totalCost, individualCost }) => {
-    const title = 'Hospedaje';
+    const title = "Hospedaje";
     const tags = [
         {
             label: "Costo total del hospedaje",
-            value: totalCost
+            value: totalCost,
         },
         {
             label: "Costo por persona",
-            value: individualCost
+            value: individualCost,
         },
     ];
 
-    return renderPrice({ title, tags })
-}
+    return renderPrice({ title, tags });
+};
 
 const renderCarsPrice = ({ amount, gas, toll, cost, totalCost }) => {
-    const title = 'Transporte';
+    const title = "Transporte";
 
     const tags = [
         {
             label: "Costo total del transporte",
-            value: totalCost
+            value: totalCost,
         },
         {
             label: "Costo de gasolina estimado por carro",
-            value: gas
+            value: gas,
         },
         {
             label: "Costo de casetas por carro",
-            value: toll
+            value: toll,
         },
         {
             label: "Numero de vehiculos",
             isStr: true,
-            value: amount
+            value: amount,
         },
         {
             label: "Costo por persona",
-            value: cost
+            value: cost,
         },
     ];
 
-    return renderPrice({ title, tags })
-
-}
+    return renderPrice({ title, tags });
+};
 
 const renderFoodPrice = ({ meals, drinks, other, totalCost }) => {
-    const title = 'Comida y bebida';
+    const title = "Comida y bebida";
     const tags = [
         {
             label: "Costo total de los insumos",
-            value: totalCost
+            value: totalCost,
         },
         {
             label: "Costo de comida para todos",
-            value: meals
+            value: meals,
         },
         {
             label: "Costo de bebidas para todos",
-            value: drinks
+            value: drinks,
         },
         {
             label: "costo de despensa en general",
-            value: other
+            value: other,
         },
     ];
 
-    return renderPrice({ title, tags })
-}
+    return renderPrice({ title, tags });
+};
 
 const Prices = ({ publicIndividualCost, hotel, food, cars }) => {
     return (
@@ -88,7 +85,7 @@ const Prices = ({ publicIndividualCost, hotel, food, cars }) => {
             {cars && renderCarsPrice(cars)}
             {food && renderFoodPrice(food)}
         </CardGroup>
-    )
-}
+    );
+};
 
-export default Prices
+export default Prices;

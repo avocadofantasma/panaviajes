@@ -1,40 +1,40 @@
-import React from 'react'
+import React from "react";
 
-import PriceCard from './priceCard';
+import PriceCard from "./priceCard";
 
 const TravelerSummary = ({ participants, originDestination }) => {
-    const { departureTime, departureDate, returnDate, origin } = originDestination;
+    const { departureTime, departureDate, returnDate, origin } =
+        originDestination;
     const title = `Vamos a ${originDestination.destination}`;
     const tags = [
         {
             label: "Invitados",
             value: participants.length,
-            isStr: true
-
+            isStr: true,
         },
         {
             label: "Hora de salida",
             value: departureTime,
-            isStr: true
+            isStr: true,
         },
         {
             label: "Nos vamos el",
             isStr: true,
-            value: departureDate
+            value: departureDate,
         },
         {
             label: "Volvemos el",
             isStr: true,
-            value: returnDate
+            value: returnDate,
         },
         {
             label: "Partimos de",
             isStr: true,
-            value: origin
+            value: origin,
         },
     ];
 
-    return <PriceCard {...{ title, tags }} />
-}
+    return <PriceCard {...{ title, tags }} />;
+};
 
-export default TravelerSummary
+export default TravelerSummary;

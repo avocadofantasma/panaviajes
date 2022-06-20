@@ -1,29 +1,25 @@
-import React from 'react'
+import React from "react";
 
-import CardGroup from 'react-bootstrap/CardGroup'
+import CardGroup from "react-bootstrap/CardGroup";
 
-import TotalCost from './totalCost';
-import TravelerSummary from './travelerSummary';
+import TotalCost from "./totalCost";
+import TravelerSummary from "./travelerSummary";
 
 const renderTotalCost = (trip) => {
-    return (
-        <TotalCost {...trip} />
-    )
-}
+    return <TotalCost {...trip} />;
+};
 
 const renderTravelerSummary = (trip) => {
-    return (
-        <TravelerSummary {...trip} />
-    )
-}
+    return <TravelerSummary {...trip} />;
+};
 
 const Summary = (trip) => {
     return (
-        <CardGroup className=''>
+        <CardGroup className="">
             {renderTotalCost(trip)}
             {renderTravelerSummary(trip)}
         </CardGroup>
-    )
-}
+    );
+};
 
-export default Summary
+export default Summary;
