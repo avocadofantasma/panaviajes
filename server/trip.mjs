@@ -7,6 +7,10 @@ const getRoundedToNextHundred = (cost) => {
 };
 
 const setCars = (trip) => {
+    const { cars } = trip;
+    if (!cars) {
+        return;
+    }
     const { gas, toll, amount } = trip.cars;
 
     trip.cars = {
@@ -17,6 +21,10 @@ const setCars = (trip) => {
 };
 
 const setFood = (trip) => {
+    const { food } = trip;
+    if (!food) {
+        return;
+    }
     const { drinks, meals, other } = trip.food;
 
     trip.food = {
@@ -26,16 +34,47 @@ const setFood = (trip) => {
 };
 
 const setHotel = (trip) => {
-    const { totalCost } = trip.hotel;
+    const { isPriceFixed, hotel, publicIndividualCost, flight, participants } =
+        trip;
 
-    trip.hotel = {
-        ...trip.hotel,
-        individualCost: totalCost / trip.participants.length,
+    if (!hotel) {
+        return;
+    }
+
+    const { totalCost } = hotel;
+
+    if (isPriceFixed) {
+        trip.hotel = {
+            individualCost: publicIndividualCost - (flight?.cost || 0),
+            totalCost:
+                (publicIndividualCost - (flight?.cost || 0)) *
+                participants.length,
+        };
+    } else {
+        trip.hotel = {
+            ...trip.hotel,
+            individualCost: totalCost / trip.participants.length,
+        };
+    }
+};
+
+const setFlight = (trip) => {
+    const { flight, participants } = trip;
+
+    trip.flight = {
+        ...flight,
+        totalCost: participants.length * flight.cost,
     };
 };
 
 const setParticipants = (trip) => {
     const { cost, participants } = trip;
+
+    trip.participants.forEach((participant) => {
+        participant.payed = participant.logs.reduce((prev, curr) => {
+            return parseInt(curr.amount) + prev;
+        }, 0);
+    });
 
     trip.individualCost = parseInt(cost / participants.length) || 0;
 };
@@ -43,7 +82,7 @@ const setParticipants = (trip) => {
 const setTotalCost = (trip) =>
     (trip.cost =
         trip.hotel.totalCost + trip.food.totalCost + trip.cars.totalCost);
-const setMovieTotalCost = (trip) =>
+const setFixedPriceTotalCost = (trip) =>
     (trip.cost = trip.publicIndividualCost * trip.participants.length);
 
 const setCosts = (trip) => {
@@ -59,7 +98,6 @@ const setCosts = (trip) => {
         return acc + payed;
     }, 0);
 
-    trip.publicIndividualCost = getRoundedToNextHundred(trip.individualCost);
     trip.assets = participants.length - sponsored;
     trip.totalCashReceived = trip.assets * trip.publicIndividualCost;
     trip.leadToPay = sponsored * trip.individualCost;
@@ -71,18 +109,26 @@ const setCosts = (trip) => {
 };
 
 const setTripPrices = (trip) => {
-    if (trip.type === "movie") {
-        setMovieTotalCost(trip);
+    setParticipants(trip);
+    trip.initialized = true;
+
+    if (trip.isPriceFixed) {
+        setFixedPriceTotalCost(trip);
     } else {
+        setTotalCost(trip);
+        trip.publicIndividualCost = getRoundedToNextHundred(
+            trip.individualCost
+        );
+    }
+    if (trip.type !== "movie") {
+        setCosts(trip);
         setCars(trip);
         setFood(trip);
         setHotel(trip);
-        setTotalCost(trip);
-        setParticipants(trip);
-        setCosts(trip);
     }
-
-    trip.initialized = true;
+    if (trip.type === "flight") {
+        setFlight(trip);
+    }
 
     return trip;
 };
