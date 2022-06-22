@@ -1,93 +1,71 @@
-[
-    {
-        "title": "Thor Love and thunder",
-        "type": "movie",
-        "subtitle": "Ida al cine",
-        "isTravel": false,
-        "publicIndividualCost": 90,
-        "assets": 0,
-        "totalCashReceived": 0,
-        "leadToPay": 0,
-        "totalCash": 0,
-        "surplusTotal": 0,
-        "surplus": 0,
-        "totalPayed": 0,
-        "totalPayedPercentage": 0,
-        "originDestination": {
-            "origin": "Casa de Paola",
-            "destination": "Thor",
-            "departureDate": "8/07/22",
-            "departureTime": "TBD",
-            "returnDate": "8/07/22"
+{
+    "title": "Cancún 2023 - coro",
+    "type": "flight",
+    "subtitle": "Ida a la playa",
+    "initialized": true,
+    "isTravel": true,
+    "isPriceFixed": true,
+    "isPackage": true,
+    "publicIndividualCost": 7900,
+    "assets": 5,
+    "totalCashReceived": 39500,
+    "leadToPay": 0,
+    "totalCash": 39500,
+    "surplusTotal": 150,
+    "surplus": 30,
+    "totalPayed": 0,
+    "totalPayedPercentage": "0.00",
+    "flight": {
+        "cost": 3350,
+        "type": "rt",
+        "departureDate": "",
+        "returnDate": "",
+        "totalCost": 16750
+    },
+    "hotel": {
+        "individualCost": 4520,
+        "totalCost": 22600
+    },
+    "originDestination": {
+        "origin": "Casa de Paola",
+        "destination": "cancun",
+        "departureDate": "12/01/23",
+        "departureTime": "9:00 am",
+        "returnDate": "15/01/23"
+    },
+    "participants": [
+        {
+            "name": "Carlos",
+            "isSponsored": false,
+            "payed": 0,
+            "logs": []
         },
-        "participants": [
-            {
-                "name": "Carlos",
-                "isSponsored": false,
-                "payed": 0,
-                "logs": [],
-                "hasConfirmed": true
-            },
-            {
-                "name": "Paola",
-                "hasConfirmed": true,
-                "isSponsored": false,
-                "payed": 0,
-                "logs": []
-            },
-            {
-                "name": "Fran",
-                "hasConfirmed": true,
-                "isSponsored": false,
-                "payed": 0,
-                "logs": []
-            },
-            {
-                "name": "Culo loco",
-                "isSponsored": false,
-                "payed": 0,
-                "logs": []
-            },
-            {
-                "name": "Miguelin ",
-                "isSponsored": false,
-                "payed": 0,
-                "logs": []
-            },
-            {
-                "name": "Fani",
-                "hasConfirmed": false,
-                "isSponsored": false,
-                "payed": 0,
-                "logs": []
-            },
-            {
-                "name": "Silvia",
-                "isSponsored": false,
-                "payed": 0,
-                "logs": []
-            },
-            {
-                "name": "Silvia",
-                "isSponsored": false,
-                "payed": 0,
-                "logs": []
-            },
-            {
-                "name": "La Culisuelta",
-                "isSponsored": false,
-                "payed": 0,
-                "logs": []
-            },
-            {
-                "name": "La Culisuelta",
-                "isSponsored": false,
-                "payed": 0,
-                "logs": []
-            }
-        ],
-        "id": 0,
-        "cost": 540,
-        "initialized": true
-    }
-]
+        {
+            "name": "fany",
+            "isSponsored": false,
+            "payed": 0,
+            "logs": []
+        },
+        {
+            "name": "Tere",
+            "isSponsored": false,
+            "payed": 0,
+            "logs": []
+        },
+        {
+            "name": "Rosa",
+            "isSponsored": false,
+            "payed": 0,
+            "logs": []
+        },
+        {
+            "name": "Sergio",
+            "isSponsored": false,
+            "payed": 0,
+            "logs": []
+        }
+    ],
+    "id": 0,
+    "cost": 39350,
+    "individualCost": 7870
+}

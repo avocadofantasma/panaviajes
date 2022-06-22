@@ -293,11 +293,13 @@ content-type: application/json
 
 {
     "title": "Cancún 2023",
-    "type": "Playa",
+    "type": "flight",
     "subtitle": "Ida a la playa",
     "initialized": false,
     "isTravel": true,
-    "publicIndividualCost": 0,
+    "isPriceFixed": true,
+    "isPackage": true,
+    "publicIndividualCost": 7870,
     "assets": 0,
     "totalCashReceived": 0,
     "leadToPay": 0,
@@ -306,6 +308,12 @@ content-type: application/json
     "surplus": 0,
     "totalPayed": 0,
     "totalPayedPercentage": 0,
+    "flight": {
+        "cost": 3350,
+        "type": "rt",
+        "departureDate":"",
+        "returnDate": ""
+    },
     "cars": {
         "amount": 3,
         "gas": 500,
@@ -317,7 +325,7 @@ content-type: application/json
         "other": 500
     },
     "hotel": {
-        "totalCost": 12000
+        "totalCost": 0
     },
     "originDestination": {
         "origin": "Casa de Paola",

@@ -10,12 +10,17 @@ import Footer from "./components/footer";
 
 import { getTrips } from "./requests.js";
 
+const queryParams = new URLSearchParams(window.location.search);
+const isAdmin = !!queryParams.get("isAdmin");
+
 function App() {
     const [trips, setTrips] = useState({
         activeTrip: 0,
         items: [],
+        isAdmin,
     });
 
+    console.log("isAdmin ", isAdmin);
     useEffect(() => {
         const fetchTrips = async () => {
             try {
@@ -36,15 +41,25 @@ function App() {
         fetchTrips();
     }, []);
 
-    if (trips.legnth < 1) {
-        return <h4>No hay viajes disponibles</h4>;
-    }
+    const renderTrips = () => {
+        if (trips.items.length < 1) {
+            return (
+                <h4 className="text-center m-4">No hay viajes disponibles</h4>
+            );
+        }
+
+        return (
+            <>
+                <TripList {...trips} setTrips={setTrips} />
+                <Trip id={trips.activeTrip} isAdmin={isAdmin} />
+            </>
+        );
+    };
 
     return (
         <div className="App mb-2 bg-white">
             <Logo />
-            <TripList {...trips} setTrips={setTrips} />
-            <Trip id={trips.activeTrip} />
+            {renderTrips()}
             <Footer />
         </div>
     );

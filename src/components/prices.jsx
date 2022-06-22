@@ -78,12 +78,50 @@ const renderFoodPrice = ({ meals, drinks, other, totalCost }) => {
     return renderPrice({ title, tags });
 };
 
-const Prices = ({ publicIndividualCost, hotel, food, cars }) => {
+const renderFlightPrice = ({
+    cost,
+    type,
+    departureDate,
+    returnDate,
+    totalCost,
+}) => {
+    const title = "Detalles del vuelo";
+    const tags = [
+        {
+            label: "Costo del vuelo por persona",
+            value: cost,
+        },
+        {
+            label: "Costo total de los vuelos",
+            value: totalCost,
+        },
+        {
+            label: "Tipo de vuelo",
+            value: type === "rt" ? "redondo" : "sencillo",
+            isStr: true,
+        },
+        {
+            label: "Salida",
+            value: departureDate,
+            isStr: true,
+        },
+        {
+            label: "Regreso",
+            value: returnDate,
+            isStr: true,
+        },
+    ];
+
+    return renderPrice({ title, tags });
+};
+
+const Prices = ({ publicIndividualCost, hotel, food, cars, flight, type }) => {
     return (
         <CardGroup>
             {hotel && renderHotelPrice(hotel)}
             {cars && renderCarsPrice(cars)}
             {food && renderFoodPrice(food)}
+            {flight && renderFlightPrice(flight)}
         </CardGroup>
     );
 };

@@ -9,6 +9,7 @@ import { FcLike } from "react-icons/fc";
 import { formatCurrency } from "../utils.js";
 
 import ConfirmDialog from "./confirmDialog.jsx";
+import AddLogEntry from "./addLogEntry.jsx";
 
 const renderPayedPill = (isCompleted) => {
     if (!isCompleted) {
@@ -59,6 +60,8 @@ const ProgressCard = ({
     publicIndividualCost,
     shouldDisplayDetail,
     handleConfirmParticipant,
+    handleSubmitLogEntry,
+    isAdmin,
 }) => {
     const [openConfirmationModal, setOpenConfirmationModal] = useState(false);
     const handleSubmit = () => {
@@ -84,7 +87,7 @@ const ProgressCard = ({
                 <Card.Body>
                     <div>
                         {isSponsored && <FcLike className="mt-" />}
-                        {` ${name}`}:
+                        {` ${name}`}
                     </div>
                     {renderPayedPill(isCompleted)}
                     {!isCompleted &&
@@ -105,6 +108,12 @@ const ProgressCard = ({
                         min={0}
                         max={publicIndividualCost}
                     />
+                    {isAdmin && (
+                        <AddLogEntry
+                            handleSubmitLogEntry={handleSubmitLogEntry}
+                            name={name}
+                        />
+                    )}
                 </Card.Body>
                 <Card.Footer>{renderLastPayment(lastPayment)}</Card.Footer>
             </>
@@ -115,7 +124,7 @@ const ProgressCard = ({
         return (
             <>
                 <Card.Body>
-                    <div>{` ${name}`}:</div>
+                    <div>{` ${name}`}</div>
                     {renderPayedPill(isCompleted)}
                     {!isCompleted &&
                         renderConfirmedPill(
@@ -124,6 +133,12 @@ const ProgressCard = ({
                             setOpenConfirmationModal,
                             handleSubmit
                         )}
+                    {isAdmin && (
+                        <AddLogEntry
+                            handleSubmitLogEntry={handleSubmitLogEntry}
+                            name={name}
+                        />
+                    )}
                 </Card.Body>
             </>
         );

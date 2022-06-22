@@ -5,7 +5,7 @@ import Prices from "./prices";
 import TravelerProgress from "./travelerProgress";
 import { getTrip } from "../requests.js";
 
-const Trip = ({ id }) => {
+const Trip = ({ id, isAdmin }) => {
     const [trip, setTrip] = useState({});
 
     useEffect(() => {
@@ -36,7 +36,7 @@ const Trip = ({ id }) => {
     };
 
     const renderTravelerProgress = () => {
-        return <TravelerProgress trip={trip} setTrip={setTrip} />;
+        return <TravelerProgress trip={trip} setTrip={setTrip} isAdmin />;
     };
 
     if (!trip || Object.keys(trip).length === 0) {
