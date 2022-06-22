@@ -36,7 +36,9 @@ const Trip = ({ id, isAdmin }) => {
     };
 
     const renderTravelerProgress = () => {
-        return <TravelerProgress trip={trip} setTrip={setTrip} isAdmin />;
+        return (
+            <TravelerProgress trip={trip} setTrip={setTrip} isAdmin={isAdmin} />
+        );
     };
 
     if (!trip || Object.keys(trip).length === 0) {

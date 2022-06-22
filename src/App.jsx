@@ -17,7 +17,7 @@ function App() {
     const [trips, setTrips] = useState({
         activeTrip: 0,
         items: [],
-        isAdmin,
+        isAdmin: isAdmin,
     });
 
     console.log("isAdmin ", isAdmin);
